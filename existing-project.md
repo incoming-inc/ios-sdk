@@ -3,10 +3,9 @@ title: Integration in an existing Project
 layout: default 
 ---
 
-### Import the iOS SDK zip ###
+### Import the Incoming SDK zip ###
 
-The PVN SDK distribution zip can be downloaded from your project in the Incoming control panel
-(contact your Incoming media representative for access).
+Contact your Incoming representative for access to the Incoming SDK distribution zip.
 
 The distribution zip file contains a directory named incoming-ios-sdk, which itself contains:
 
@@ -15,14 +14,8 @@ The distribution zip file contains a directory named incoming-ios-sdk, which its
 * a sample configuration file sample-incoming-ios-sdk.plist
 * README and CHANGELOG
 
-The distribution zip also contains:
 
-* incoming-ios-widget: the widget target helper which allows to play Incoming video right in the Notification Center
-* incoming-ios-notificationui: the notification UI, which allows to play Incoming video right in the Notifications, on iOS 10
-Integration for these two items are covered in separate pages, c.f. [Today widget integration](./widget-integration.html) and [Custom notification UI (iOS 10)](./custom-notification-ui.html)
-
-
-To add the Incoming PVN SDK to your project, drag and drop the incoming-ios-sdk onto your XCode project. Tick "Copy items if needed".
+To add the Incoming SDK to your project, drag and drop the incoming-ios-sdk onto your XCode project. Tick "Copy items if needed".
 ![Add SDK to project dialog](./images/add_sdk_to_project_dialog.png)
 
 
@@ -47,7 +40,7 @@ the *Link Binary With Libraries* section
 	* Accelerate.framework
 	* UIKit.framework
 	* libz.dylib
-	* NotificationCenter.framework (status can be set to “Optional” if you want to support iOS7
+	* NotificationCenter.framework
 
 
 ### Set linker flags ###
@@ -62,7 +55,7 @@ Start by choosing the main target for your app, selecting the Build Settings tab
 ### Add bridging header ###
 
 If your project doesn't use swift, you may skip to the next step. Swift users must add [this 
-bridging header](https://github.com/incoming-inc/ios-template-app/blob/master/Swift/ISDK-Bridging-Header.h) 
-to their project to be able to use the Incoming PVN sdk.
+bridging header](https://github.com/incoming-inc/ios-sdk/blob/master/Swift/ISDK-Bridging-Header.h) 
+to their project to be able to use the Incoming SDK.
 
 {% include_relative existing-project-common.md %}

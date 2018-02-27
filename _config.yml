@@ -1,6 +1,6 @@
-title: Push Video SDK for iOS 
-tagline: Incoming Push Video SDK for iOS 
-baseurl: /ios-template-app
+title: Incoming SDK for iOS 
+tagline: Incoming SDK for iOS 
+baseurl: /ios-sdk/
 ignore: ['apidoc']
 
 
