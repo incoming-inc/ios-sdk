@@ -7,18 +7,8 @@
 //
 
 #import "PVTAppDelegate.h"
-#import <IncomingPVN/ISDKAppDelegateHelper.h>
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-#import <UserNotifications/UserNotifications.h>
-#import <UserNotificationsUI/UserNotificationsUI.h>
 
-@interface PVTAppDelegate() <UNUserNotificationCenterDelegate> {
-    
-}
-@end
-
-#endif
 @implementation PVTAppDelegate
 
 
@@ -27,38 +17,14 @@
     // ISDK initialization
     [ISDKAppDelegateHelper application:[UIApplication sharedApplication] didFinishLaunchingWithOptions:launchOptions];
     
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-    if (NSClassFromString(@"UNUserNotificationCenter")) {
-        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-        center.delegate = self;
-    }
-#endif
-    
-    
     // Register for remote notifications. The Incoming PVN uses silent remote notifications for content updates. 
     // You must call this method at some stage for the push video service to operate correctly. 
     [ISDKAppDelegateHelper registerForRemoteNotifications];
     
     
-    
-    
-    // This will pop-up the OS permission dialog, feel free to
-    // integrate them differently in your workflow
-    [ISDKAppDelegateHelper registerForNotifications];
-    
-    // perform your own initialization here
-    
     return YES;
 }
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
-{
-    if ([ISDKAppDelegateHelper handleOpenURL:url sourceApplication:sourceApplication annotation:annotation] == NO)
-    {
-        // perform handling of your app URL here
-    }
-    return YES;
-}
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     [ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:completionHandler];
@@ -102,65 +68,6 @@
     }
 }
 
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    [ISDKAppDelegateHelper application:application didReceiveLocalNotification:notification];
-}
-
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forLocalNotification:(UILocalNotification *)userInfo completionHandler:(void (^)())completionHandler {
-    
-    if ([ISDKAppDelegateHelper application:application handleActionWithIdentifier:identifier
-                      forLocalNotification:userInfo completionHandler:completionHandler] == NO)
-    {
-        // process your app local notification here
-        
-        // call completion handler
-        if (completionHandler)
-        {
-            completionHandler();
-        }
-    }
-}
-
-- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
-{
-    [ISDKAppDelegateHelper application:application didRegisterUserNotificationSettings:notificationSettings];
-}
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 100000
-
-#pragma  mark - UNUserNotificationCenterDelegate methods
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler
-{
-    [ISDKAppDelegateHelper userNotificationCenter:center didReceiveNotificationResponse:response withCompletionHandler:^(BOOL processed) {
-        if (!processed)
-        {
-            // handle host app notification response.
-        }
-        if (completionHandler)
-        {
-            completionHandler();
-        }
-    }];
-}
-
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center
-       willPresentNotification:(UNNotification *)notification
-         withCompletionHandler:(void (^)(UNNotificationPresentationOptions options))completionHandler
-{
-    [ISDKAppDelegateHelper userNotificationCenter:center willPresentNotification:notification withCompletionHandler:^(BOOL processed) {
-        if (!processed)
-        {
-            // handle host app notification
-            // and call completion handler
-        } else {
-            completionHandler(UNNotificationPresentationOptionNone);
-        }
-    }];
-}
-
-#endif
 
 
 
