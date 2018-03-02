@@ -7,7 +7,7 @@
 //
 
 #import "PVTAppDelegate.h"
-
+#import <IncomingPVN/IncomingPVN.h>
 
 @implementation PVTAppDelegate
 
@@ -30,7 +30,7 @@
     [ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:completionHandler];
 }
 
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
+- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
 {
     [ISDKAppDelegateHelper application:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 }
