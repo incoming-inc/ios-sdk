@@ -6,17 +6,6 @@ use_frameworks!
 target 'PVNSampleSwift' do
   pod 'IncomingSDK/IncomingPVN'
 
-# (optional) Today Widget target
-target 'TodayWidget' do
-  pod 'IncomingSDK/TodayWidget'
-end
-
-# (optional) Notification UI target
-target 'NotificationUI' do
-  platform :ios, '10.0'
-  pod 'IncomingSDK/NotificationUI'
-end
-
 
 end
 
