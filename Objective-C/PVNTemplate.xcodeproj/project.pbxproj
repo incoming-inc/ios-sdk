@@ -16,6 +16,7 @@
 		858610BD1946A0FC008E86EB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 858610BB1946A0FC008E86EB /* Main_iPad.storyboard */; };
 		858610C01946A0FC008E86EB /* PVTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 858610BF1946A0FC008E86EB /* PVTViewController.m */; };
 		858610C21946A0FC008E86EB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 858610C11946A0FC008E86EB /* Images.xcassets */; };
+		96DC896C2048FF3C00A77066 /* incoming-ios-sdk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9621CC562048FDA9004646F4 /* incoming-ios-sdk.plist */; };
 		96ECF7C11A7F31D00016432E /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 96ECF7C01A7F31D00016432E /* libz.dylib */; };
 		E06D93F2BABDD9EC1385AD92 /* Pods_PushVideoTemplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AF082975877EE93DE26494 /* Pods_PushVideoTemplate.framework */; };
 /* End PBXBuildFile section */
@@ -218,6 +219,7 @@
 			files = (
 				858610BD1946A0FC008E86EB /* Main_iPad.storyboard in Resources */,
 				858610C21946A0FC008E86EB /* Images.xcassets in Resources */,
+				96DC896C2048FF3C00A77066 /* incoming-ios-sdk.plist in Resources */,
 				858610BA1946A0FC008E86EB /* Main_iPhone.storyboard in Resources */,
 				858610B11946A0FC008E86EB /* InfoPlist.strings in Resources */,
 			);
