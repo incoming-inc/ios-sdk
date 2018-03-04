@@ -28,8 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         // which improves the timing prediction of Push Video Notifications.
         // Calling these methods may result in the OS permission dialog being presented
         // to the user.
-        ISDKAppDelegateHelper.registerForLocationUpdates()
-        ISDKAppDelegateHelper.registerForMotionActivity()
+
+//        ISDKAppDelegateHelper.registerForLocationUpdates()
+//        ISDKAppDelegateHelper.registerForMotionActivity()
         
         // <insert your app initialization code here>
         return true
