@@ -19,6 +19,7 @@
 		962F4C6B1F2AF75000A3539D /* incoming-notification-ui.plist in Resources */ = {isa = PBXBuildFile; fileRef = 962F4C6A1F2AF75000A3539D /* incoming-notification-ui.plist */; };
 		962F4C6D1F2AF78100A3539D /* incoming-widget.plist in Resources */ = {isa = PBXBuildFile; fileRef = 962F4C6C1F2AF78100A3539D /* incoming-widget.plist */; };
 		965032B11A89DDA500DE4D73 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 965032B01A89DDA500DE4D73 /* libz.dylib */; };
+		96869E38204CBB6500AEFD78 /* incoming-ios-sdk.plist in Resources */ = {isa = PBXBuildFile; fileRef = 96869E37204CBB6500AEFD78 /* incoming-ios-sdk.plist */; };
 		96ECF8521A843BB40016432E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ECF8511A843BB40016432E /* AppDelegate.swift */; };
 		96ECF8541A843BB40016432E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96ECF8531A843BB40016432E /* ViewController.swift */; };
 		96ECF8571A843BB40016432E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96ECF8551A843BB40016432E /* Main.storyboard */; };
@@ -85,7 +86,7 @@
 		962F4C6C1F2AF78100A3539D /* incoming-widget.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "incoming-widget.plist"; sourceTree = "<group>"; };
 		965032621A89D0C700DE4D73 /* ISDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "ISDK-Bridging-Header.h"; path = "../ISDK-Bridging-Header.h"; sourceTree = "<group>"; };
 		965032B01A89DDA500DE4D73 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
-		96CFD75F203D2AC200BFDA52 /* incoming-ios-sdk.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "incoming-ios-sdk.plist"; path = "../Pods/IncomingSDK/IncomingPVN/incoming-ios-sdk.plist"; sourceTree = "<group>"; };
+		96869E37204CBB6500AEFD78 /* incoming-ios-sdk.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "incoming-ios-sdk.plist"; path = "../../Objective-C/PVNTemplate/incoming-ios-sdk.plist"; sourceTree = "<group>"; };
 		96ECF84C1A843BB40016432E /* PVNSampleSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PVNSampleSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96ECF8501A843BB40016432E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		96ECF8511A843BB40016432E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,14 +159,6 @@
 			path = NotificationUI;
 			sourceTree = "<group>";
 		};
-		962F4C701F2AF7AE00A3539D /* ISDK Config */ = {
-			isa = PBXGroup;
-			children = (
-				96CFD75F203D2AC200BFDA52 /* incoming-ios-sdk.plist */,
-			);
-			name = "ISDK Config";
-			sourceTree = "<group>";
-		};
 		962F4C711F2AF80700A3539D /* ISDK Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,7 +200,7 @@
 		96ECF84E1A843BB40016432E /* PVNSampleSwift */ = {
 			isa = PBXGroup;
 			children = (
-				962F4C701F2AF7AE00A3539D /* ISDK Config */,
+				96869E37204CBB6500AEFD78 /* incoming-ios-sdk.plist */,
 				96ECF8511A843BB40016432E /* AppDelegate.swift */,
 				96ECF8531A843BB40016432E /* ViewController.swift */,
 				96ECF8551A843BB40016432E /* Main.storyboard */,
@@ -372,6 +365,7 @@
 				96ECF8571A843BB40016432E /* Main.storyboard in Resources */,
 				96ECF85C1A843BB40016432E /* LaunchScreen.xib in Resources */,
 				96ECF8591A843BB40016432E /* Images.xcassets in Resources */,
+				96869E38204CBB6500AEFD78 /* incoming-ios-sdk.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
