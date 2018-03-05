@@ -27,10 +27,9 @@ The minimum code to add to your application delegate is as follows.
 	import UIKit
 
 	@UIApplicationMain
-	class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+	class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	    var window: UIWindow?
-
 
 	    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -46,8 +45,8 @@ The minimum code to add to your application delegate is as follows.
 	        // which improves the timing prediction of Push Video Notifications.
 	        // Calling these methods may result in the OS permission dialog being presented
 	        // to the user.
-	        ISDKAppDelegateHelper.registerForLocationUpdates()
-	        ISDKAppDelegateHelper.registerForMotionActivity()
+	        // ISDKAppDelegateHelper.registerForLocationUpdates()
+	        // ISDKAppDelegateHelper.registerForMotionActivity()
 
 
 	        // <insert your app initialization code here>
@@ -87,17 +86,7 @@ The minimum code to add to your application delegate is as follows.
             
 	        }
 	    }
-    
-	    // Note: if you are targetting iOS 10 and up, this method is not needed
-	    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-	        // ISDK method forward
-	        if (ISDKAppDelegateHelper.application(application, didReceive: notification) == false)
-	        {
-	            // process your app local notification here
-            
-	        }
-	    }
-   
+
 
 
 #### Objective-C ####
@@ -125,19 +114,14 @@ The minimum code to add to your application delegate is as follows.
 		// which improves the timing prediction of Push Video Notifications
 		// calling these methods may also result in the OS permission dialog being presented
 		// to the user.
-		[ISDKAppDelegateHelper registerForMotionActivity];
-		[ISDKAppDelegateHelper registerForLocationUpdates];
+		// [ISDKAppDelegateHelper registerForMotionActivity];
+		// [ISDKAppDelegateHelper registerForLocationUpdates];
 
 		return YES;
 	}	
 
 	- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
 		[ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:completionHandler];
-	}
-
-	- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)())completionHandler
-	{
-		[ISDKAppDelegateHelper application:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
 	}
 
 	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
