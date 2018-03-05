@@ -9,11 +9,11 @@ layout: default
 Apple Push Notification Service (APNS) is used by Incoming to remotely wake up the SDKs, and notify 
 clients when new content is available. 
 
-*Note*: Remote notifications are only used to periodically wake up the SDK in the background, without user-visible 
-notifications.
+*Note: Remote notifications are only used for background content updates only, without user-visible 
+notifications*
 
-*Note*: The SDK reverts to periodic polling in the absence of Apple Push Notifications provisioning. You 
-can therefore test the SDK functionality without completing this step, but it is necessary in production. 
+*Note: The SDK reverts to periodic polling in the absence of Apple Push Notifications provisioning. You 
+can therefore test the SDK functionality without completing this step, but it is necessary in production.* 
 
 If you have not already generated the Apple Push Notifications Certificate and Keys for you app, here are
 some simple instructions.
