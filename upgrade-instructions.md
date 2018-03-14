@@ -2,10 +2,13 @@
 title: Incoming iOS PVN SDK - Upgrade instructions
 layout: default 
 ---
+Incoming SDK v2.3.1
+-------------------
+- No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `cocoapod update`. 
 
 PVN SDK v2.3.0 - July 2017
 --------------------------
-- No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones.
+- No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `cocoapod update`. 
 
 PVN SDK v2.1-26 - June 2017
 ---------------------------
