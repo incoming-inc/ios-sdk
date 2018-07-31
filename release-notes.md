@@ -3,6 +3,10 @@ title: Incoming iOS SDK - Release notes
 layout: default 
 ---
 
+Incoming SDK v2.3.5
+-------------------
+- Remove obsolete CoreMotion framework requirement in podspec 
+
 Incoming SDK v2.3.3
 -------------------
 - Fix packaging issue resulting in iTunes connect validation errors 
