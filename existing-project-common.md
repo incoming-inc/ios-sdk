@@ -55,6 +55,9 @@ The minimum code to add to your application delegate is as follows.
 
 	    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 	        // ISDK method forward
+			// You can also perform your own application's background fetch method, combine the UIBackgroundFetchResult as needed, 
+			// and call the OS-supplied completion handler only once with the combined result. C.f. the objective-C example for 
+			// an example of how to do that. 
 	        ISDKAppDelegateHelper.application(application, performFetchWithCompletionHandler:completionHandler)
 	    }
     
@@ -121,7 +124,23 @@ The minimum code to add to your application delegate is as follows.
 	}	
 
 	- (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
-		[ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:completionHandler];
+    
+	    [ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:^(UIBackgroundFetchResult isdkResult) {
+	        // perform your app background fetch - and return result in appBackgroundFetchResult
+	        UIBackgroundFetchResult appBackgroundFetchResult = ...;
+        
+	        if (appBackgroundFetchResult == UIBackgroundFetchResultFailed) {
+	            completionHandler(UIBackgroundFetchResultFailed);
+	            return;
+	        }
+        
+	        if (isdkResult == UIBackgroundFetchResultNewData || appBackgroundFetchResult == UIBackgroundFetchResultNewData) {
+	            completionHandler(UIBackgroundFetchResultNewData);
+	            return;
+	        }
+        
+	        completionHandler(appBackgroundFetchResult);
+	    }];
 	}
 
 	- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
@@ -135,9 +154,13 @@ The minimum code to add to your application delegate is as follows.
 	}
 
 	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
-	fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+	        fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 	{
-		[ISDKAppDelegateHelper application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
+	     if ([ISDKAppDelegateHelper application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler] == NO)
+	    {
+	        // process your remote notification here.
+	        completionHandler(UIBackgroundFetchResultNoData);
+	    }
 	}
 
 	- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
