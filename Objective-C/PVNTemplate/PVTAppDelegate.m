@@ -28,11 +28,36 @@
 
 - (void) application:(UIApplication *)application performFetchWithCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler{
     [ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:completionHandler];
+    
+    /**
+    If your app uses background fetch, you may want to serialize the work using, e.g. 
+    
+    [ISDKAppDelegateHelper application:application performFetchWithCompletionHandler:^(UIBackgroundFetchResult isdkResult) {
+        // perform your app background fetch - and return result in appBackgroundFetchResult
+        UIBackgroundFetchResult appBackgroundFetchResult = UIBackgroundFetchResultNewData;
+        
+        if (appBackgroundFetchResult == UIBackgroundFetchResultFailed) {
+            completionHandler(UIBackgroundFetchResultFailed);
+            return;
+        }
+        
+        if (isdkResult == UIBackgroundFetchResultNewData || appBackgroundFetchResult == UIBackgroundFetchResultNewData) {
+            completionHandler(UIBackgroundFetchResultNewData);
+            return;
+        }
+        
+        completionHandler(appBackgroundFetchResult);
+    }];
+    */
 }
 
 - (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
 {
-    [ISDKAppDelegateHelper application:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
+    if ([ISDKAppDelegateHelper canHandleBackgroundURLSession:identifier]) {
+        [ISDKAppDelegateHelper application:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
+    } else {
+        // handle your app background download session here
+    }
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
