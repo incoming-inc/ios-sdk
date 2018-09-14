@@ -16,8 +16,8 @@ These are all implemented in the template application and can be conveniently co
 
 Take a look into the sample application’s delegate code:
 
- * Swift [https://github.com/incoming-inc/ios-sdk/blob/master/Swift/PVNSampleSwift/AppDelegate.swift](https://github.com/incoming-inc/ios-template-app/blob/master/Swift/PVNSampleSwift/AppDelegate.swift)
- * Objective-C [https://github.com/incoming-inc/ios-sdk/blob/master/Objective-C/PVNTemplate/PVTAppDelegate.m](https://github.com/incoming-inc/ios-template-app/blob/master/Objective-C/PVNTemplate/PVTAppDelegate.m)
+ * Swift [https://github.com/incoming-inc/ios-sdk/blob/master/Swift/PVNSampleSwift/AppDelegate.swift](https://github.com/incoming-inc/ios-sdk/blob/master/Swift/PVNSampleSwift/AppDelegate.swift)
+ * Objective-C [https://github.com/incoming-inc/ios-sdk/blob/master/Objective-C/PVNTemplate/PVTAppDelegate.m](https://github.com/incoming-inc/ios-sdk/blob/master/Objective-C/PVNTemplate/PVTAppDelegate.m)
 
 
 The minimum code to add to your application delegate is as follows. 
