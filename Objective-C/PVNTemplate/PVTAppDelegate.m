@@ -14,11 +14,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Enable debug logging
+    [ISDKAppDelegateHelper enableDebugLogging:YES];
+    
     // ISDK initialization
     [ISDKAppDelegateHelper application:[UIApplication sharedApplication] didFinishLaunchingWithOptions:launchOptions];
     
-    // Register for remote notifications. The Incoming PVN uses silent remote notifications for content updates. 
-    // You must call this method at some stage for the push video service to operate correctly. 
+    // Optional - if remote notifications are configured for ISDK
     [ISDKAppDelegateHelper registerForRemoteNotifications];
     
     
@@ -51,25 +53,20 @@
     */
 }
 
-- (void)application:(UIApplication *)application handleEventsForBackgroundURLSession:(NSString *)identifier completionHandler:(void (^)(void))completionHandler
-{
-    if ([ISDKAppDelegateHelper canHandleBackgroundURLSession:identifier]) {
-        [ISDKAppDelegateHelper application:application handleEventsForBackgroundURLSession:identifier completionHandler:completionHandler];
-    } else {
-        // handle your app background download session here
-    }
-}
 
+// Optional - if remote notifications are configured for ISDK
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
     [ISDKAppDelegateHelper application:application didRegisterForRemoteNotificationsWithDeviceToken:deviceToken];
 }
 
+// Optional - if remote notifications are configured for ISDK
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     [ISDKAppDelegateHelper application:application didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
+// Optional - if remote notifications are configured for ISDK
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
     if ([ISDKAppDelegateHelper application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler] == NO)
@@ -85,6 +82,7 @@
     }
 }
 
+// Optional - if remote notifications are configured for ISDK
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     if ([ISDKAppDelegateHelper application:application didReceiveRemoteNotification:userInfo] == NO)

@@ -17,11 +17,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        // ISDK enable debug logging
+        ISDKAppDelegateHelper.setDebugLogging(true);
+        
         // ISDK method forward
         ISDKAppDelegateHelper.application(application, didFinishLaunchingWithOptions:launchOptions)
         
-        // Register for remote notifications. The Incoming PVN uses silent remote notifications for content updates. 
-        // You must call this method at some stage for the push video service to operate correctly. 
+        // Optional - if remote notifications are configured for ISDK
         ISDKAppDelegateHelper.registerForRemoteNotifications()
         
         // the two following calls are optional. They enable location and motion data collection
@@ -29,8 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         // Calling these methods may result in the OS permission dialog being presented
         // to the user.
 
-//        ISDKAppDelegateHelper.registerForLocationUpdates()
-//        ISDKAppDelegateHelper.registerForMotionActivity()
+        //        ISDKAppDelegateHelper.registerForLocationUpdates()
+        //        ISDKAppDelegateHelper.registerForMotionActivity()
         
         // <insert your app initialization code here>
         return true
@@ -42,8 +44,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         // ISDK method forward
         ISDKAppDelegateHelper.application(application, performFetchWithCompletionHandler:completionHandler)
         
+        // If your app uses background fetch, you may want to serialize the work, as shown in 
+        // the objective-C example. 
+        
     }
     
+    
+    // Optional - if remote notifications are configured for ISDK
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         // ISDK method forward
@@ -51,13 +58,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate  {
         
     }
     
-    
+    // Optional - if remote notifications are configured for ISDK
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         
         // ISDK method forward
         ISDKAppDelegateHelper.application(application, didFailToRegisterForRemoteNotificationsWithError:error)
     }
     
+    // Optional - if remote notifications are configured for ISDK
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         
         // ISDK method forward
