@@ -3,7 +3,7 @@ title: Incoming iOS SDK - Release notes
 layout: default 
 ---
 
-Incoming SDK v.2.4.0
+Incoming SDK v2.4.0
 --------------------
 - Add custom analytics events, clarify logging
 
