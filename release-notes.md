@@ -5,7 +5,7 @@ layout: default
 
 Incoming SDK v.2.4.0
 --------------------
-- Add custom analytics event recording API
+- Add custom analytics events
 
 Incoming SDK v2.3.5
 -------------------

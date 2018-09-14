@@ -16,6 +16,4 @@ This incoming-ios-sdk.plist file is the main SDK configuration file, it must con
 Enter the values supplied by your Incoming representative. The SDK is now operational.
 
 
-
-
 Once done, you may want to proceed to the [Apple Push Notification configuration](./apns.html)
