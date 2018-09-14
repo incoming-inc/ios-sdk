@@ -12,8 +12,9 @@ clients when new content is available.
 *Note: Remote notifications are only used for background content updates only, without user-visible 
 notifications*
 
-*Note: The SDK reverts to periodic polling in the absence of Apple Push Notifications provisioning. You 
-can therefore test the SDK functionality without completing this step, but it is necessary in production.* 
+*Note: The SDK reverts to periodic polling in the absence of Apple Push Notifications provisioning. This 
+integration step is therefore optional. Please contact your Incoming representative to discuss the relevance
+of this step for your application use case.* 
 
 If you have not already generated the Apple Push Notifications Certificate and Keys for you app, here are
 some simple instructions.
@@ -109,3 +110,6 @@ __You are now ready to share the certificate files `cert-production.pem` and `ke
  * [https://vivocha.atlassian.net/wiki/spaces/VVCJ/pages/1048822/How+to+create+the+Apple+Push+Notification+Certificate+and+Key](https://vivocha.atlassian.net/wiki/spaces/VVCJ/pages/1048822/How+to+create+the+Apple+Push+Notification+Certificate+and+Key)
  * [https://quickblox.com/developers/How_to_create_APNS_certificates](https://quickblox.com/developers/How_to_create_APNS_certificates)
 
+
+
+Once done, you may want to proceed to the [Testing / logging page](./testing-logging.html)

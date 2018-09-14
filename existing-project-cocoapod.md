@@ -11,13 +11,14 @@ Install cocoapod, by following the [installation guide](https://guides.cocoapods
 
 Below is an example of cocoapod file. You need to replace the target names with the name of your app target. 
 
-        platform :ios, '8.0' # or higher
-        use_frameworks!
+~~~~
+	platform :ios, '8.0' # or higher
+	use_frameworks!
 
-        target 'MyApp' do
-          pod 'IncomingSDK/IncomingPVN'
-        end
-
+	target 'MyApp' do
+	  pod 'IncomingSDK/IncomingPVN'
+	end
+~~~~
 
 Once added, run `pod install`.
 

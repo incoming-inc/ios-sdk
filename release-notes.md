@@ -5,7 +5,7 @@ layout: default
 
 Incoming SDK v.2.4.0
 --------------------
-- Add custom analytics events
+- Add custom analytics events, clarify logging
 
 Incoming SDK v2.3.5
 -------------------
