@@ -102,6 +102,8 @@
 		
 		<option value="//api/name/playInterstitialFromViewController:">+ playInterstitialFromViewController:</option>
 		
+		<option value="//api/name/recordApplicationEvent:completionHandler:">+ recordApplicationEvent:completionHandler:</option>
+		
 		<option value="//api/name/registerForLocationUpdates">+ registerForLocationUpdates</option>
 		
 		<option value="//api/name/registerForMotionActivity">+ registerForMotionActivity</option>
@@ -121,6 +123,8 @@
 		<option value="//api/name/setNotificationsDisplayActive:">+ setNotificationsDisplayActive:</option>
 		
 		<option value="//api/name/setProjectKey:">+ setProjectKey:</option>
+		
+		<option value="//api/name/setUserId:">+ setUserId:</option>
 		
 		<option value="//api/name/shouldPlayInterstitial">+ shouldPlayInterstitial</option>
 		
@@ -404,7 +408,7 @@ handleEventsForBackgroundURLSession:(NSString </em>)identifier completionHandler
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (void)application:(nonnull UIApplication *)<em>application</em> handleEventsForBackgroundURLSession:(nonnull NSString *)<em>identifier</em> completionHandler:(nonnull void ( ^ ) ( ))<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (void)application:(nonnull UIApplication *)<em>application</em> handleEventsForBackgroundURLSession:(nonnull NSString *)<em>identifier</em> completionHandler:(nonnull void ( ^ ) ( void ))<em>completionHandler</em></code></div>
 
 		    
 			
@@ -1035,7 +1039,7 @@ completionHandler:(void (^)(void))completionHandler method</p>
 			
 		    
 
-			<div class="method-subsection method-declaration"><code>+ (BOOL)application:(nonnull UIApplication *)<em>application</em> handleActionWithIdentifier:(nullable NSString *)<em>identifier</em> forLocalNotification:(nullable UILocalNotification *)<em>notification</em> completionHandler:(nullable void ( ^ ) ( ))<em>completionHandler</em></code></div>
+			<div class="method-subsection method-declaration"><code>+ (BOOL)application:(nonnull UIApplication *)<em>application</em> handleActionWithIdentifier:(nullable NSString *)<em>identifier</em> forLocalNotification:(nullable UILocalNotification *)<em>notification</em> completionHandler:(nullable void ( ^ ) ( void ))<em>completionHandler</em></code></div>
 
 		    
 			
@@ -1166,6 +1170,63 @@ completionHandler:(void (^)(void))completionHandler method</p>
 		</div>
 	</div>
 </div><div class="section-method">
+	<a name="//api/name/getISDKUserNotificationSettings" title="getISDKUserNotificationSettings"></a>
+	<h3 class="method-title"><code><a href="#//api/name/getISDKUserNotificationSettings">+&nbsp;getISDKUserNotificationSettings</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Obtain the UIUserNotificationSettings needed for the Incoming PVN SDK. Use this
+method to merge your own application UIUserNotificationSettings and call UIApplication&rsquo;s
+registerForRemoteNotificationTypes method. Note that if you use this method, you shouldn&rsquo;t have
+to use the <a href="#//api/name/registerForNotifications">registerForNotifications</a> method below. Also note</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (nonnull UIUserNotificationSettings *)getISDKUserNotificationSettings</code></div>
+
+		    
+			
+
+			
+			<div class="method-subsection return">
+				<h4 class="method-subtitle parameter-title">Return Value</h4>
+				<p>the Incoming PVN UIUserNotificationSettings</p>
+			</div>
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Obtain the UIUserNotificationSettings needed for the Incoming PVN SDK. Use this
+method to merge your own application UIUserNotificationSettings and call UIApplication&rsquo;s
+registerForRemoteNotificationTypes method. Note that if you use this method, you shouldn&rsquo;t have
+to use the <a href="#//api/name/registerForNotifications">registerForNotifications</a> method below. Also note</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ISDKAppDelegateHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
 	<a name="//api/name/setDelegate:" title="setDelegate:"></a>
 	<h3 class="method-title"><code><a href="#//api/name/setDelegate:">+&nbsp;setDelegate:</a></code>
 </h3>
@@ -1207,63 +1268,6 @@ completionHandler:(void (^)(void))completionHandler method</p>
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Configure an <a href="../Protocols/ISDKDelegate.html">ISDKDelegate</a></p>
-			</div>
-			
-
-			
-
-			
-
-			
-			<div class="method-subsection declared-in-section">
-				<h4 class="method-subtitle">Declared In</h4>
-				<p><code class="declared-in-ref">ISDKAppDelegateHelper.h</code></p>
-			</div>
-			
-			
-		</div>
-	</div>
-</div><div class="section-method">
-	<a name="//api/name/getISDKUserNotificationSettings" title="getISDKUserNotificationSettings"></a>
-	<h3 class="method-title"><code><a href="#//api/name/getISDKUserNotificationSettings">+&nbsp;getISDKUserNotificationSettings</a></code>
-</h3>
-
-	<div class="method-info">
-		<div class="pointy-thing"></div>
-
-		<div class="method-info-container">
-			
-			
-			<div class="method-subsection brief-description">
-				<p>Obtain the UIUserNotificationSettings needed for the Incoming PVN SDK. Use this
-method to merge your own application UIUserNotificationSettings and call UIApplication&rsquo;s
-registerForRemoteNotificationTypes method. Note that if you use this method, you shouldn&rsquo;t have
-to use the <a href="#//api/name/registerForNotifications">registerForNotifications</a> method below. Also note</p>
-			</div>
-			
-		    
-
-			<div class="method-subsection method-declaration"><code>+ (nonnull UIUserNotificationSettings *)getISDKUserNotificationSettings</code></div>
-
-		    
-			
-
-			
-			<div class="method-subsection return">
-				<h4 class="method-subtitle parameter-title">Return Value</h4>
-				<p>the Incoming PVN UIUserNotificationSettings</p>
-			</div>
-			
-
-			
-
-			
-			<div class="method-subsection discussion-section">
-				<h4 class="method-subtitle">Discussion</h4>
-				<p>Obtain the UIUserNotificationSettings needed for the Incoming PVN SDK. Use this
-method to merge your own application UIUserNotificationSettings and call UIApplication&rsquo;s
-registerForRemoteNotificationTypes method. Note that if you use this method, you shouldn&rsquo;t have
-to use the <a href="#//api/name/registerForNotifications">registerForNotifications</a> method below. Also note</p>
 			</div>
 			
 
@@ -1540,6 +1544,130 @@ choose to call this method at an appropriate time, e.g. after educating the user
 			<div class="method-subsection discussion-section">
 				<h4 class="method-subtitle">Discussion</h4>
 				<p>Convenience method to programmatically set the project key</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ISDKAppDelegateHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/setUserId:" title="setUserId:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/setUserId:">+&nbsp;setUserId:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Set application-specific user ID - to be recorded in analytics
+allowing matching with external analytics service</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)setUserId:(nullable NSString *)<em>userId</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>userId</code></th>
+						<td><p>the alternate user ID to record for this user</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Set application-specific user ID - to be recorded in analytics
+allowing matching with external analytics service</p>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection declared-in-section">
+				<h4 class="method-subtitle">Declared In</h4>
+				<p><code class="declared-in-ref">ISDKAppDelegateHelper.h</code></p>
+			</div>
+			
+			
+		</div>
+	</div>
+</div><div class="section-method">
+	<a name="//api/name/recordApplicationEvent:completionHandler:" title="recordApplicationEvent:completionHandler:"></a>
+	<h3 class="method-title"><code><a href="#//api/name/recordApplicationEvent:completionHandler:">+&nbsp;recordApplicationEvent:completionHandler:</a></code>
+</h3>
+
+	<div class="method-info">
+		<div class="pointy-thing"></div>
+
+		<div class="method-info-container">
+			
+			
+			<div class="method-subsection brief-description">
+				<p>Record a generic, application-defined analytics event - used e.g. for custom analytics solutions</p>
+			</div>
+			
+		    
+
+			<div class="method-subsection method-declaration"><code>+ (void)recordApplicationEvent:(nonnull NSDictionary *)<em>parameters</em> completionHandler:(void ( ^ _Nullable ) ( void ))<em>handler</em></code></div>
+
+		    
+			
+			<div class="method-subsection arguments-section parameters">
+				<h4 class="method-subtitle parameter-title">Parameters</h4>
+				<table class="argument-def parameter-def">
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>parameters</code></th>
+						<td><p>dictionary containing the application event parameters. All keys in this dictionary
+must be NSString, all values in the dictionary must be NSString or NSNumber.</p></td>
+					</tr>
+				
+					<tr>
+						<th scope="row" class="argument-name"><code>handler</code></th>
+						<td><p>(optional) block to be called when done</p></td>
+					</tr>
+				
+				</table>
+			</div>
+			
+
+			
+
+			
+
+			
+			<div class="method-subsection discussion-section">
+				<h4 class="method-subtitle">Discussion</h4>
+				<p>Record a generic, application-defined analytics event - used e.g. for custom analytics solutions</p>
 			</div>
 			
 
@@ -2378,7 +2506,7 @@ Using this method allows to show interstitial ad the rate specified in the</p>
 				<footer>
 					<div class="footer-copyright">
 						
-						<p class="copyright">Copyright &copy; 2017 Incoming Inc. All rights reserved. Updated: 2017-07-10</p>
+						<p class="copyright">Copyright &copy; 2018 Incoming Inc. All rights reserved. Updated: 2018-09-14</p>
 						
 						
 						<p class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.2.1 (build 1333)</a>.</p>

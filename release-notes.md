@@ -3,6 +3,10 @@ title: Incoming iOS SDK - Release notes
 layout: default 
 ---
 
+Incoming SDK v.2.4.0
+--------------------
+- Add custom analytics event recording API
+
 Incoming SDK v2.3.5
 -------------------
 - Remove obsolete CoreMotion framework requirement in podspec 

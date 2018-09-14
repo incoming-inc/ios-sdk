@@ -16,9 +16,10 @@ through cocoapod, or by dropping the SDK distribution folder into your project, 
  * [Existing project, manual integration](./existing-project.html)
  * [Existing project, cocoapod integration](./existing-project-cocoapod.html)
  * [SDK settings](./sdk-settings.html)
- * [Apple Remote Push Notifications configuration](./apns.html)
+ * (optional) [Apple Remote Push Notifications configuration](./apns.html)
 
 # API documentation #
+ * [Recording analytics events](./analytics-events.html)
  * [Incoming SDK API Documentation](./apidoc/html/index.html)
 
 # Release #
