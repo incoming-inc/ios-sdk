@@ -1,11 +1,12 @@
-### Configure Background Modes ###
+### Configure capabilities ###
 
-Using XCode, configure the application background modes:
+Using XCode, configure the application capabilities:
 
  * click on your app target, then select `Capabilities`.
  * Turn on `Background Modes`
  * In Background Modes, enable `Background fetch` and `Remote Notifications`
-
+ * Turn on `Access Wifi Information`
+ 
 ![Background mode configuration ](./images/setup_target_capabilities.png)
 
 
