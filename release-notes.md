@@ -3,6 +3,10 @@ title: Incoming iOS SDK - Release notes
 layout: default 
 ---
 
+Incoming SDK v2.5.2
+-------------------
+- Maintenance release
+
 Incoming SDK v2.5.1
 -------------------
 - Maintenance release
