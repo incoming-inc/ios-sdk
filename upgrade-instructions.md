@@ -62,7 +62,7 @@ PVN SDK v1.13 - Aug. 2016
 - You must call the 
 	- [ISDKAppDelegateHelper userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:completionHandler]
 	- [ISDKAppDelegateHelper userNotificationCenter:willPresentNotification:withCompletionHandler]
-methods from your UNUserNotificationCenterDelegate. C.f. example at [https://github.com/incoming-inc/ios-template-app](https://github.com/incoming-inc/ios-template-app)
+methods from your UNUserNotificationCenterDelegate. C.f. example at [https://github.com/sourse-ai/ios-template-app](https://github.com/sourse-ai/ios-template-app)
 
 
 v1.12-129 - May 2016
