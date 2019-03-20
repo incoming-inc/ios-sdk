@@ -6,14 +6,14 @@ layout: default
 ### Apple Push Notifications configuration ###
 
 
-Apple Push Notification Service (APNS) is used by Incoming to remotely wake up the SDKs, and notify 
+Apple Push Notification Service (APNS) is used by Sourse to remotely wake up the SDKs, and notify 
 clients when new content is available. 
 
 *Note: Remote notifications are only used for background content updates only, without user-visible 
 notifications*
 
 *Note: The SDK reverts to periodic polling in the absence of Apple Push Notifications provisioning. This 
-integration step is therefore optional. Please contact your Incoming representative to discuss the relevance
+integration step is therefore optional. Please contact your Sourse representative to discuss the relevance
 of this step for your application use case.* 
 
 If you have not already generated the Apple Push Notifications Certificate and Keys for you app, here are
@@ -103,7 +103,7 @@ __Repeat steps 3b to 3d for 'Apple Production iOS Push Services', saving the fil
 	openssl pkcs12 -nocerts -nodes -out key-production.pem -in apns-production-cert.p12
 	
 
-__You are now ready to share the certificate files `cert-production.pem` and `key-production.pem` with your Incoming technical representative__
+__You are now ready to share the certificate files `cert-production.pem` and `key-production.pem` with your Sourse technical representative__
 
 #### Other resources #####
 

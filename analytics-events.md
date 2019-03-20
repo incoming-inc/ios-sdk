@@ -1,23 +1,23 @@
 ---
-title: Incoming iOS SDK - Analytics events
+title: Sourse iOS SDK - Analytics events
 layout: default 
 ---
 
 ### Recording custom analytics events ###
 
-The Incoming SDK supports recording custom analytics events.
+The Sourse SDK supports recording custom analytics events.
 
 
 #### Setting an external user ID
 
-Setting an external user ID is useful to reconcile the Incoming analytics with another external analytics service, i.e. firebase. 
-You can pass the external analytics service user ID to the Incoming SDK using the method
+Setting an external user ID is useful to reconcile the Sourse analytics with another external analytics service, i.e. firebase. 
+You can pass the external analytics service user ID to the Sourse SDK using the method
 
 `[ISDKAppDelegateHelper setUserId:(nullable NSString *)userId]`
 
 #### Recording custom events
 
-To record custom, application-defined events in the Incoming analytics service, use the following method:
+To record custom, application-defined events in the Sourse analytics service, use the following method:
  
 ~~~~
  [ISDKAppdelegateHelper recordApplicationEvent:(nonnull NSDictionary *)parameters

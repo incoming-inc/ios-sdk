@@ -1,33 +1,33 @@
 ---
-title: Incoming iOS SDK - Upgrade instructions
+title: Sourse iOS SDK - Upgrade instructions
 layout: default 
 ---
 
-Incoming SDK v2.5.1
+Sourse SDK v2.5.1
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
-Incoming SDK v2.5.0
+Sourse SDK v2.5.0
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
-Incoming SDK v2.4.0
+Sourse SDK v2.4.0
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
-Incoming SDK v2.3.5
+Sourse SDK v2.3.5
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
-Incoming SDK v2.3.4
+Sourse SDK v2.3.4
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
-Incoming SDK v2.3.3
+Sourse SDK v2.3.3
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK` 
 
-Incoming SDK v2.3.1
+Sourse SDK v2.3.1
 -------------------
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones, or use `pod update IncomingSDK`. 
 
@@ -100,7 +100,7 @@ v1.4-17 - 8th July 2015
 ------------------------
 
 - No breaking API change introduced in this version. Just remove the old Incoming-PVN.{bundle,framework} from your project, and add the new ones. If upgrading directly from v1.2, have a look at the 1.3 upgrade instructions below. 
-- The today widget is now distributed in binary form. It is packaged as a framework and bundle, making integration far easier. The widget / SDK API however hasn't changed, so you can either keep your existing widget code, or upgrade to the binary distribution and benefit from the new features (in-widget video experience mostly). Please contact your Incoming re-presentative to access widget source code, and/or for customisation options. 
+- The today widget is now distributed in binary form. It is packaged as a framework and bundle, making integration far easier. The widget / SDK API however hasn't changed, so you can either keep your existing widget code, or upgrade to the binary distribution and benefit from the new features (in-widget video experience mostly). Please contact your Sourse re-presentative to access widget source code, and/or for customisation options. 
 
 
 
