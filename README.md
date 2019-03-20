@@ -1,12 +1,6 @@
-ios-template-app
-================
+Sourse Analytics SDK template for iOS
+=====================================
 
-Simple template application that demonstrates how to integrate the Incoming Push Video Notification SDK in an iOS application.
+Simple template application that demonstrates how to integrate the Sourse Push Analytics SDK in an iOS application.
 
-This project requires the configuration file and SDK supplied by Incoming Media in order to compile and run.
-
-<!--
-Two pieces of configuration need to be set before running the sample application. Go to `incoming-ios-sdk.plist` and:
-   1. Add the project key supplied by Incoming Media.
-   2. Add the API endpoint supplied by Incoming Media. 
--->
+This project requires the configuration file and SDK supplied by Sourse in order to run.
