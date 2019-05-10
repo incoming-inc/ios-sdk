@@ -3,6 +3,22 @@ title: Sourse iOS SDK - Release notes
 layout: default 
 ---
 
+Sourse SDK v2.5.6
+-------------------
+- Maintenance release
+
+Sourse SDK v2.5.5
+-------------------
+- Maintenance release
+
+Sourse SDK v2.5.4
+-------------------
+- Maintenance release
+
+Sourse SDK v2.5.3
+-------------------
+- Maintenance release
+
 Sourse SDK v2.5.2
 -------------------
 - Maintenance release
