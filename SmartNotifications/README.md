@@ -14,13 +14,28 @@ Note: all keys must be strings as per Firebase cloud messaging requirements.
 
 ```
 {
-      'handler': 'com.sourse.notification',             // must be present in the payload
-      'title':  'some title',                                  // the notification title text, visible to the end user
-      'message': 'some body',                                  // the notification body text, visible to the end user
-      'actionURL': 'myapp://show/123323/episode/372',   // optional - the launch action URL to deep-link into the app content
-      'tag': 'daily-show-123323',                       // optional - a tag to identify this notification, will be present in the analytics
-      'isSmartNotification': '0',                         // optional - if present and 1, the notification will be shown immediately (Default is `0`).
-      'expiryDate': '2012-04-23T18:25:43Z',             // optional - date after which we should not show this notification to the user
-      'embargoDate': '2012-04-23T18:25:43Z'             // optional - date before which we should not show this notification to the user
+    // must be present in the payload
+    'handler': 'com.sourse.notification',
+
+    // the notification title text, visible to the end user
+    'title':  'some title',
+
+    // the notification body text, visible to the end user
+    'message': 'some body', 
+
+    // optional - the launch action URL to deep-link into the app content
+    'actionURL': 'myapp://show/123323/episode/372',
+
+    // optional - a tag to identify this notification, will be present in the analytics
+    'tag': 'daily-show-123323',
+
+    // optional - if present and 1, the notification will be shown immediately (Default is `0`).
+    'isSmartNotification': '0',
+
+    // optional - date after which we should not show this notification to the user
+    'expiryDate': '2012-04-23T18:25:43Z',
+    
+    // optional - date before which we should not show this notification to the user
+    'embargoDate': '2012-04-23T18:25:43Z'
 }
 ```
