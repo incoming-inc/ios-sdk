@@ -29,7 +29,7 @@ Note: all keys must be strings as per Firebase cloud messaging requirements.
     // optional - a tag to identify this notification, will be present in the analytics
     'tag': 'daily-show-123323',
 
-    // optional - if present and 1, the notification will be shown immediately (Default is `0`).
+    // optional - if present and 0, the notification will be shown immediately (Default or if omitted - is '1`).
     'isSmartNotification': '0',
 
     // optional - date after which we should not show this notification to the user
