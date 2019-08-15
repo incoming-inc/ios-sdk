@@ -8,6 +8,16 @@ This project requires
 - a Firebase project configured for Firebase cloud messaging
 
 
+## Sourse SDK dependency
+
+The sourse SDK version 2.6.0 or later is required
+
+```
+
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.0'
+
+```
+
 ## Smart notification payload
 
 Note: all keys must be strings as per Firebase cloud messaging requirements. 

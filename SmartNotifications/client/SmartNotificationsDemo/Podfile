@@ -6,6 +6,5 @@ target 'SmartNotificationsDemo' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/RemoteConfig'
-  pod 'IncomingSDK/IncomingPVN'
-  
+  pod 'IncomingSDK/IncomingPVN', '~> 2.6.0'
 end
