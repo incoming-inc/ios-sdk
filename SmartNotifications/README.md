@@ -10,15 +10,27 @@ This project requires
 
 ## Sourse SDK dependency
 
-The sourse SDK version 2.6.0 or later is required
+The sourse SDK version 2.6.1 or later is required
 
 ```
 
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.0'
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.1'
 
 ```
 
-## Smart notification payload
+## Sending smart notifications
+
+Sourse's smart notifications are essentially silent notifications, sent using your existing push notification 
+platform. C.f. the server folder for an example showing how to send such notifications using Firebase 
+cloud messaging.
+
+## Receiving smart notifications
+
+The sourse SDK contain a method to detect wether a push notification is a sourse smart notification
+or not. C.f. the client folder for the implementation details. 
+
+
+## Smart notification payload specification
 
 Note: all keys must be strings as per Firebase cloud messaging requirements. 
 
