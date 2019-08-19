@@ -10,11 +10,11 @@ This project requires
 
 ## Sourse SDK dependency
 
-The sourse SDK version 2.6.1 or later is required
+The sourse SDK version 2.6.2 or later is required
 
 ```
 
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.1'
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.2'
 
 ```
 
