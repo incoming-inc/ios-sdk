@@ -73,7 +73,7 @@ where for each notification received, the Sourse SDK creates a local user notifi
 to maximise the probabilty of the user opening it. 
 
 One problem is how to programmatically send smart (and silent) notifications to apps instances which have integrated the Sourse SDK, 
-and standard non-silent notifications to app instances which have not. 
+and standard standard, non-silent notifications to app instances which have not. 
 
 Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (this is supported in the console).
 
@@ -94,4 +94,45 @@ For each notification to be sent to a topic, the backend will now send two notif
 - one silent notification addressed to condition `'${topic}' in topics && 'isdk_sdk_integrated' in topics`
 - one normal (non silent) notification addressed with to the condition `'${topic}' in topics && !('isdk_sdk_integrated' in topics)`
 
-c.f. [the example](server/sendNotifications.js) for backend code demonstrating this
+Example:
+
+```
+async function sendSourseSmartNotification(firebase, topic, title, body, actionURL, tag, expiry, isSmart) {
+  var payload = {
+    condition: `'${topic}' in topics && 'sourse_sdk_integrated' in topics`,
+    data: {
+      'handler': 'com.sourse.notification',
+      'title':  title,
+      'message': body,
+      'actionURL': actionURL
+    }
+  }
+  return firebase.messaging().send(payload);
+}
+
+
+async function sendStandardNotification(firebase, topic, title, body) {
+  var payload = {
+    condition: `'${topic}' in topics && !('sourse_sdk_integrated' in topics)`,
+    notification: {
+      title: title,
+      body: body
+    }
+  }
+  return firebase.messaging().send(payload));
+}
+
+
+async function sendNotification(firebase, topic, title, body, actionURL, tag, expiry, isSmart) {
+
+  const p1 = sendSourseSmartNotification(firebase, topic, title, body, actionURL, tag, expiry, isSmart);
+  const p2 = sendStandardNotification(firebase, topic, title, body);
+
+  return Promise.all([p1, p2]);
+}
+
+
+```
+
+
+c.f. [the example](server/sendNotifications.js) backend code demonstrating this
