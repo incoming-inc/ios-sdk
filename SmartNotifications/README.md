@@ -48,8 +48,8 @@ pod 'IncomingSDK/IncomingPVN', '~> 2.6.2'
 ### Sourse SDK integration
 
 The sourse SDK requires a small number of UIApplicationDelegate methods to be forwarded, for the 
-analytics and notification feature to function. C.f. [the sample app delegate](./client/SmartNotificationsDemo/SmarNotificationsDemo/AppDelegate.swift)
-for a minimalist integration example. 
+analytics and notification feature to function. C.f. [the sample app delegate](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift)
+for a minimalist integration example. Most of this integration is already done if you are already integrating the Sourse SDK for Analytics purposes. 
 
 ### Compatibility with other notifications
 
@@ -68,7 +68,7 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
     }
 ```
 
-Again, c.f. [AppDelegate.swift](./client/SmartNotificationsDemo/SmarNotificationsDemo/AppDelegate.swift)
+Again, c.f. [AppDelegate.swift](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift)
 
 
 
@@ -84,7 +84,7 @@ ISDKSmartNotifications.smartNotifications().isSmartNotificationDelayEnabled = en
 For example if using Firebase, create a `is_smart_notification_enabled` remote config value, and 
 configure the sourse's SDK `isSmartNotificationsEnabled` using a Firebase remote config value. 
 
-c.f. [AppDelegate.swift](./client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for full example. 
+c.f. [AppDelegate.swift](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for full example. 
 
 
 ## Smart notification payload specification
