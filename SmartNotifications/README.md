@@ -111,13 +111,13 @@ c.f. [AppDelegate.swift](client/SmartNotificationsDemo/SmartNotificationsDemo/Ap
     'isSmartNotification': '0',
 
     // optional - date after which we should not show this notification to the user
-	// the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
-	// always expressed in UTC (as indicated by the Z)
+    // the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
+    // always expressed in UTC (as indicated by the Z)
     'expiryDate': '2012-04-23T18:25:43.234Z',
     
     // optional - date before which we should not show this notification to the user
-	// the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
-	// always expressed in UTC (as indicated by the Z)
+    // the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
+    // always expressed in UTC (as indicated by the Z)
     'embargoDate': '2012-04-23T18:25:43Z'
 }
 ```
