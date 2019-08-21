@@ -146,7 +146,7 @@ C.f. [the example code](client/SmartNotificationsDemo/SmartNotificationsDemo/App
 
 We use the Firebase Cloud Messaging 'conditions' feature to send ISDK smart notifications to clients who subscribe to the additional topic `sourse_sdk_integrated`, and to *only send the standard notifications to clients who don't*. This means the standard user-visible notifications are not sent to clients which have the sourse SDK integrated. 
 
-This is possible thanks to the [conditions conditional logic feature of FCM](https://firebase.google.com/docs/cloud-messaging/send-message).
+This is possible thanks to the [conditions conditional logic feature of FCM](https://firebase.google.com/docs/cloud-messaging/send-message#send_messages_to_topics).
 
 For each notification to be sent e.g. to the `23-show-23443-newepisode` topic, the backend now sends two notifications 
 - one silent notification with the condition `'23-show-23443-newepisode' in topics && 'sourse_sdk_integrated' in topics`
