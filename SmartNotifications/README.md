@@ -122,11 +122,11 @@ c.f. [the example code](client/SmartNotificationsDemo/SmartNotificationsDemo/App
 
 ## Incremental deployment considerations
 
-Remember that Sourse smart notifications are essentially FCM silent notifications where for each notification received, the Sourse SDK creates a local user notifications which is shown at the optimal time, to maximise the probabilty of the user opening it. 
+Remember that Sourse smart notifications are essentially silent push notifications, where for each notification received, the Sourse SDK creates a local user notifications which is shown to the user at the optimal time to maximise the probabilty of the user opening it. 
 
-As users of native applications may not update immediately or at all, one problem is how to programmatically send smart (and silent) notifications to apps instances which have integrated the Sourse SDK, and standard standard, non-silent notifications to app instances which have not. This is because the standard, non-silent notifications cannot be touched by the Sourse SDK - they are shown by the OS upon reception.  
+Native application updates are incremental in nature, with some users not updating at all. One problem therefore is how to programmatically send smart (and silent) notifications to apps instances which have integrated the Sourse SDK while also sending standard, non-silent notifications to app instances which have not integrated the Sourse SDK. This is needed because the standard, non-silent notifications cannot be touched by the Sourse SDK - they are shown by the OS upon reception.  
 
-Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (this is supported in the console).
+We propose a solution to this problem adapted when using Firebase cloud messaging (FCM) as a notification provider. Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (this is supported in the console).
 
 To solve this, one approach is to use the `conditions` feature of FCM, as follows: 
 
@@ -134,7 +134,7 @@ To solve this, one approach is to use the `conditions` feature of FCM, as follow
 
 For new clients, integrating the Sourse SDK
 
-- In addition to any existing topic the user is subscribed to, additionally subscribe to a new topic called e.g.`isdk_smart_notifications` (c.f. below)
+- In addition to any existing topic the user is subscribed to, additionally subscribe to a new topic called e.g.`sourse_sdk_integrated` (c.f. below)
 
 C.f. [the example code](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for code demonstrating this
 
