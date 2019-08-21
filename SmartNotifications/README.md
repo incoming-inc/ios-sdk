@@ -65,3 +65,33 @@ Note: all keys must be strings as per Firebase cloud messaging requirements.
     'embargoDate': '2012-04-23T18:25:43Z'
 }
 ```
+
+## Incremental deployment considerations
+
+Remember that Sourse smart notifications are essentially FCM silent notifications, 
+where for each notification received, the Sourse SDK creates a local user notifications which is shown at the optimal time, 
+to maximise the probabilty of the user opening it. 
+
+One problem is how to programmatically send smart (and silent) notifications to apps instances which have integrated the Sourse SDK, 
+and standard non-silent notifications to app instances which have not. 
+
+Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (this is supported in the console).
+
+To solve this, we propose to use the `conditions` feature of FCM, as follows: 
+
+### On the client
+
+- Configure the sourse's SDK `isSmartNotificationsEnabled` using a Firebase remote config value
+- In addition to any existing topic the user is subscribed to, additionally subscribe to a new topic called e.g.`isdk_smart_notifications` (c.f. below)
+
+C.f. [the example](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for code demonstrating this
+
+### On the backend
+
+We use the Firebase Cloud Messaging 'conditions' feature to send ISDK smart notifications to clients who subscribe to the additional topic `isdk_smart_notifications`, and to *only send the standard notifications to clients who don't*. This is possible thanks to the condition logic feature of FCM, documented at https://firebase.google.com/docs/cloud-messaging/send-message:
+
+For each notification to be sent to a topic, the backend will now send two notifications: 
+- one silent notification addressed to condition `'${topic}' in topics && 'isdk_sdk_integrated' in topics`
+- one normal (non silent) notification addressed with to the condition `'${topic}' in topics && !('isdk_sdk_integrated' in topics)`
+
+c.f. [the example](server/sendNotifications.js) for backend code demonstrating this

@@ -95,7 +95,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-        Messaging.messaging().subscribe(toTopic: "/topics/smartNotificationTest")
+     
+        // subscribe to this topic if the Sourse SDK is deployed
+        Messaging.messaging().subscribe(toTopic: "sourse_sdk_integrated");
+
+        // as an example here, subscribe to a show topic
+        Messaging.messaging().subscribe(toTopic: "smartNotificationTest")
     }
     
 }
