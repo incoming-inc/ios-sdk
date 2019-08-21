@@ -1,25 +1,12 @@
 Sourse Smart Notifications SDK template for iOS
 ===============================================
 
-Simple template application that demonstrates how to integrate Sourse Smart Notifications in an iOS application, including A/B testing using firebase. 
-
-To run this project requires
-- the project key supplied by Sourse
-- a Firebase project configured for Firebase cloud messaging
-
 
 ## Overview
 
 Sourse smart notifications are essentially silent remote notifications, where for each notification received, the Sourse SDK creates 
 a local user notifications which shown to the user at the optimal time to maximise the probabilty of the user opening it. 
 
-## Sourse SDK dependency
-
-The sourse SDK version 2.6.2 or later is required
-
-```
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.2'
-```
 
 ## Sending smart notifications
 
@@ -46,9 +33,25 @@ async function sendSourseSmartNotification(firebase, topic, title, body, actionU
 and the notification is immediately shown to the end-user (C.f. below for a full documentation of the notification payload).
 
 If your use case includes some notifications to some topics to be shown immediately, and not delayed by the Sourse SDK, we recommend
-using this feature. This way the Sourse Analytics will include those notifications. 
+using this feature. This way the Sourse analytics will include those notifications. 
 
 ## Receiving smart notifications
+
+### Sourse SDK dependency
+
+The sourse SDK version 2.6.2 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
+
+```
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.2'
+```
+
+### Sourse SDK integration
+
+The sourse SDK requires a small number of UIApplicationDelegate methods to be forwarded, for the 
+analytics and notification feature to function. C.f. [the sample app delegate](./client/SmartNotificationsDemo/SmarNotificationsDemo/AppDelegate.swift)
+for a minimalist integration example. 
+
+### Compatibility with other notifications
 
 The sourse SDK contain a method to detect wether a push notification is a sourse smart notification
 or not:
@@ -65,12 +68,13 @@ func application(_ application: UIApplication, didReceiveRemoteNotification user
     }
 ```
 
-For a complete sample app implementation, c.f. [the client folder](./client) 
+Again, c.f. [AppDelegate.swift](./client/SmartNotificationsDemo/SmarNotificationsDemo/AppDelegate.swift)
+
 
 
 ## A/B testing
 
-To A/B test the feature, the client include a method to disable the smart scheduling, which is equivalent
+To A/B test the feature, the SDK includes a method to disable the Sourse smart scheduling (but retain the Sourse notifications analytics), which is equivalent
 to sending the notification with the `isSmartNotification` flag to `0`. 
 
 ```
@@ -80,7 +84,7 @@ ISDKSmartNotifications.smartNotifications().isSmartNotificationDelayEnabled = en
 For example if using Firebase, create a `is_smart_notification_enabled` remote config value, and 
 configure the sourse's SDK `isSmartNotificationsEnabled` using a Firebase remote config value. 
 
-c.f. [the example code](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for full example. 
+c.f. [AppDelegate.swift](./client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for full example. 
 
 
 ## Smart notification payload specification
@@ -126,27 +130,28 @@ Remember that Sourse smart notifications are essentially silent push notificatio
 
 Native application updates are incremental in nature, with some users not updating at all. One problem therefore is how to programmatically send smart (and silent) notifications to apps instances which have integrated the Sourse SDK while also sending standard, non-silent notifications to app instances which have not integrated the Sourse SDK. This is needed because the standard, non-silent notifications cannot be touched by the Sourse SDK - they are shown by the OS upon reception.  
 
-We propose a solution to this problem adapted when using Firebase cloud messaging (FCM) as a notification provider. Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (this is supported in the console).
+We propose a solution to this problem when using Firebase cloud messaging (FCM) as a notification provider. 
 
-To solve this, one approach is to use the `conditions` feature of FCM, as follows: 
+Unfortunately, at the time of writing, Firebase Cloud Messaging does not support targeting specific app versions when sending cloud messages using the Firebase admin SDK / API (which is supported when sending in the console). One solution is to use the `conditions` feature of FCM, as follows: 
 
 ### Client
 
-For new clients, integrating the Sourse SDK
+For any clients integrating the Sourse SDK
 
-- In addition to any existing topic the user is subscribed to, additionally subscribe to a new topic called e.g.`sourse_sdk_integrated` (c.f. below)
+- In addition to any existing topic the user is subscribed to, additionally subscribe to a new topic called e.g.`sourse_sdk_integrated`.
 
 C.f. [the example code](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift) for code demonstrating this
 
 ### Backend
 
-We use the Firebase Cloud Messaging 'conditions' feature to send ISDK smart notifications to clients who subscribe to the additional topic `sourse_sdk_integrated`, and to *only send the standard notifications to clients who don't*. This means the standard notifications are not sent to clients which have the sourse SDK integrated. 
+We use the Firebase Cloud Messaging 'conditions' feature to send ISDK smart notifications to clients who subscribe to the additional topic `sourse_sdk_integrated`, and to *only send the standard notifications to clients who don't*. This means the standard user-visible notifications are not sent to clients which have the sourse SDK integrated. 
 
-This is possible thanks to the (condition logic feature of FCM)[https://firebase.google.com/docs/cloud-messaging/send-message].
+This is possible thanks to the (conditional logic feature of FCM)[https://firebase.google.com/docs/cloud-messaging/send-message].
 
-To achieve this, the approach is, for each notification to be sent to a topic, the backend will now send two notifications with conditions rather than topic clauses: 
-- one silent notification with the condition `'${topic}' in topics && 'sourse_sdk_integrated' in topics`
-- one normal (non silent) notification with the condition `'${topic}' in topics && !('sourse_sdk_integrated' in topics)`
+For each notification to be sent e.g. to the `23-show-23443-newepisode` topic, the backend now sends two notifications 
+- one silent notification with the condition `'23-show-23443-newepisode' in topics && 'sourse_sdk_integrated' in topics`
+- one normal (non silent) notification with the condition `'23-show-23443-newepisode' in topics && !('sourse_sdk_integrated' in topics)`
+
 
 Example:
 
@@ -189,4 +194,13 @@ async function sendNotification(firebase, topic, title, body, actionURL, tag, ex
 ```
 
 c.f. [the example](server/sendNotifications.js) backend code demonstrating this. 
+
+
+
+
+Simple template application that demonstrates how to integrate Sourse Smart Notifications in an iOS application, including A/B testing using firebase. 
+
+Running this project requires:
+- the project key supplied by Sourse
+- a Firebase project configured for Firebase cloud messaging
 
