@@ -193,14 +193,5 @@ async function sendNotification(firebase, topic, title, body, actionURL, tag, ex
 
 ```
 
-c.f. [the example](server/sendNotifications.js) backend code demonstrating this. 
-
-
-
-
-Simple template application that demonstrates how to integrate Sourse Smart Notifications in an iOS application, including A/B testing using firebase. 
-
-Running this project requires:
-- the project key supplied by Sourse
-- a Firebase project configured for Firebase cloud messaging
+c.f. [the example](backend/sendNotifications.js) backend code demonstrating this. 
 
