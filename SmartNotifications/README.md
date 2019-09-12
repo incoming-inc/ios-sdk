@@ -39,10 +39,10 @@ using this feature. This way the Sourse analytics will include those notificatio
 
 ### Sourse SDK dependency
 
-The sourse SDK version 2.6.2 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
+The sourse SDK version 2.6.3 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
 
 ```
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.2'
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.3'
 ```
 
 ### Sourse SDK integration
@@ -51,19 +51,35 @@ The sourse SDK requires a small number of UIApplicationDelegate methods to be fo
 analytics and notification feature to function. C.f. [the sample app delegate](client/SmartNotificationsDemo/SmartNotificationsDemo/AppDelegate.swift)
 for a minimalist integration example. Most of this integration is already done if you are already integrating the Sourse SDK for Analytics purposes. 
 
+
+### Configure your app capabilities ###
+
+Using XCode, configure the application capabilities:
+
+ * click on your app target, then select `Capabilities`.
+ * Turn on `Background Modes`
+ * In Background Modes, enable `Background fetch` and `Remote Notifications`
+ * Turn on `Access Wifi Information`
+ 
+![Background mode configuration ](./images/setup_target_capabilities.png)
+
 ### Compatibility with other notifications
 
 The sourse SDK contain a method to detect wether a push notification is a sourse smart notification
 or not:
 
 ```
-func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        // ISDK method forward
-        if ISDKAppDelegateHelper.application(application, didReceiveRemoteNotification: userInfo) == false
-        {
-            // this notification is not a Sourse smart notification,
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+
+        if (ISDKAppDelegateHelper.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler) == false) {
+            // this notification is not a Sourse smart notification
             // process your app's remote notification here
             
+            
+            // then call the OS completion handler
+            completionHandler(.noData)
         }
     }
 ```

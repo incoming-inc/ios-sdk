@@ -20,12 +20,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // Firebase config
         FirebaseApp.configure()
         Messaging.messaging().delegate = self
         
+        // Notification center
+        UNUserNotificationCenter.current().delegate = self;
+        
+        
+        // Debug logging for ISDK
+        ISDKAppDelegateHelper.setDebugLogging(true)
+        
+        // ISDK method forward
         ISDKAppDelegateHelper.application(application, didFinishLaunchingWithOptions:launchOptions)
         ISDKAppDelegateHelper.registerForRemoteNotifications()
         
+        
+         // request notification permission, somewhere in your app flow
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert]) { _, error in
+            if let e = error {
+                NSLog("error - \(e.localizedDescription)")
+            }
+        }
+        
+        // Firebase remote config update
         setupFirebaseRemoteConfig() {
             let enabled = RemoteConfig.remoteConfig().configValue(forKey: kSmartNotificationRemoteConfigKey).boolValue
             self.configureSmartNotifications(enabled: enabled)
@@ -53,8 +71,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
+    // Your host-app deep linking
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        NSLog("opening URL \(url .absoluteString)");
+        return true;
+    }
     
-    /// Sourse smart notifications - Added methods
+    // MARK: - Sourse smart notifications - Added methods
     
     /// Enable / Disable smart notifications
     /// - parameter enabled: pass false to disable smart notifications
@@ -73,13 +96,46 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ISDKAppDelegateHelper.application(application, didFailToRegisterForRemoteNotificationsWithError:error)
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any]) {
-        // ISDK method forward
-        if ISDKAppDelegateHelper.application(application, didReceiveRemoteNotification: userInfo) == false
-        {
-            // this notification is not a Sourse smart notification,
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if (ISDKAppDelegateHelper.application(application, didReceiveRemoteNotification: userInfo, fetchCompletionHandler: completionHandler) == false) {
+            // this notification is not a Sourse smart notification
             // process your app's remote notification here
             
+            
+            // and only then call the OS completion handler
+            completionHandler(.noData)
+        }
+    }
+    
+    // if the host app min target iOS version is < 10.0 and you want to display notifications while the app is running.
+    // Otherwise this method may be ommitted
+    func application(_ application: UIApplication,
+                     didReceive notification: UILocalNotification) {
+        // ISDK method forward
+        if (ISDKAppDelegateHelper.application(application, didReceive: notification) == false) {
+            // this notification is not a Sourse smart notification,
+            // process your app's local notification here
+        }
+    }
+    
+    // if the host app min target iOS version is < 10.0
+    // Otherwise this method may be ommitted
+    func application(_ application: UIApplication,
+                     handleActionWithIdentifier identifier: String?,
+                     for notification: UILocalNotification,
+                     completionHandler: @escaping () -> Void) {
+        // ISDK method forward
+        if (ISDKAppDelegateHelper.application(application,
+                                              handleActionWithIdentifier: identifier,
+                                              for: notification,
+                                              completionHandler: completionHandler) == false) {
+            // this notification is not a Sourse smart notification,
+            // process your app's local notification here
+            
+            // and call the OS completion handler
+            completionHandler()
         }
     }
     
@@ -90,6 +146,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: - UNUserNotificationCenterDelegate methods
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        // ISDK method forward
+        ISDKAppDelegateHelper.userNotificationCenter(center, didReceive: response) { (isISDK) in
+            if !isISDK {
+                // this notification is not a Sourse smart notification,
+                // process your app's local notification here
+            }
+            // always call the completion handler
+            completionHandler()
+        }
+    }
+    
+}
 
 /// Firebase messaging delegate
 extension AppDelegate: MessagingDelegate {
