@@ -145,8 +145,7 @@ c.f. [AppDelegate.swift](client/SmartNotificationsDemo/SmartNotificationsDemo/Ap
     // optional - a set of custom key/values, which will be passed
     // to the local notification, and can be interpreted by your application
     // Keys must be prefixed with the 'custom_' string, which will be stripped
-    // before passed in notifications. (this because APNS/Firebase don't support nested
-    // dictionnary)
+    // before passed in notifications. (as APNS/Firebase do not support nested dictionary)
     // e.g. with the example below, the host app will receive a local notification
     // with the userInfo dictionary containing { "key1": "value1", "key2": "value2" }
     "custom_key1": "value1",
