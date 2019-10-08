@@ -39,10 +39,10 @@ using this feature. This way the Sourse analytics will include those notificatio
 
 ### Sourse SDK dependency
 
-The sourse SDK version 2.6.4 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
+The sourse SDK version 2.6.5 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
 
 ```
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.4'
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.5'
 ```
 
 ### Sourse SDK integration
