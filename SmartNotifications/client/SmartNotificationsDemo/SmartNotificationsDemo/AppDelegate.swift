@@ -144,6 +144,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ISDKAppDelegateHelper.application(application, performFetchWithCompletionHandler:completionHandler)
     }
 
+    func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
+        if ISDKAppDelegateHelper.canHandleBackgroundURLSession(identifier) {
+            ISDKAppDelegateHelper.application(application, handleEventsForBackgroundURLSession: identifier, completionHandler: completionHandler)
+        } else {
+            // this background download is not related to the Sourse SDK, 
+            // handle your application's background downloads
+        }
+    }
+
 }
 
 // MARK: - UNUserNotificationCenterDelegate methods

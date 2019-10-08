@@ -39,10 +39,10 @@ using this feature. This way the Sourse analytics will include those notificatio
 
 ### Sourse SDK dependency
 
-The sourse SDK version 2.6.3 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
+The sourse SDK version 2.6.4 or later is required. The recommended way of integrating the Sourse SDK is through cocoapod:
 
 ```
-pod 'IncomingSDK/IncomingPVN', '~> 2.6.3'
+pod 'IncomingSDK/IncomingPVN', '~> 2.6.4'
 ```
 
 ### Sourse SDK integration
@@ -109,32 +109,48 @@ c.f. [AppDelegate.swift](client/SmartNotificationsDemo/SmartNotificationsDemo/Ap
 ```
 {
     // must be present in the payload
-    'handler': 'com.sourse.notification',
+    "handler": "com.sourse.notification",
 
     // the notification title text, visible to the end user
-    'title':  'some title',
+    "title":  "some title",
 
     // the notification body text, visible to the end user
-    'message': 'some body', 
+    "message": "some body", 
 
     // optional - the launch action URL to deep-link into the app content
-    'actionURL': 'myapp://show/123323/episode/372',
+    // If present, the SDK will invoke this URL using UIApplication.openURL(:) 
+    "actionURL": "myapp://show/123323/episode/372",
+
+    // optional - the location for an image to be attached to the notification
+    // if present, the SDK will download this image and attach it to the local notification
+    // Note: if present, the notification can only be shown once the image is downloaded 
+    "imageURL": "https://lorempixel.com/600/350/sports/",
 
     // optional - a tag to identify this notification, will be present in the analytics
-    'tag': 'daily-show-123323',
+    "tag": "daily-show-123323",
 
-    // optional - if present and 0, the notification will be shown immediately (Default or if omitted - is '1`).
-    'isSmartNotification': '0',
+    // optional - if present and 0, the notification will be shown immediately (Default or if omitted - is "1`).
+    "isSmartNotification": "0",
 
     // optional - date after which we should not show this notification to the user
     // the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
     // always expressed in UTC (as indicated by the Z)
-    'expiryDate': '2012-04-23T18:25:43.234Z',
+    "expiryDate": "2012-04-23T18:25:43.234Z",
     
     // optional - date before which we should not show this notification to the user
     // the format of this date is ISO-8601 and the format is: YYYY-MM-DDTHH:mm:ss.sssZ
     // always expressed in UTC (as indicated by the Z)
-    'embargoDate': '2012-04-23T18:25:43Z'
+    "embargoDate": "2012-04-23T18:25:43Z",
+
+    // optional - a set of custom key/values, which will be passed
+    // to the local notification, and can be interpreted by your application
+    // Keys must be prefixed with the 'custom_' string, which will be stripped
+    // before passed in notifications. (this because APNS/Firebase don't support nested
+    // dictionnary)
+    // e.g. with the example below, the host app will receive a local notification
+    // with the userInfo dictionary containing { "key1": "value1", "key2": "value2" }
+    "custom_key1": "value1",
+    "custom_key2": "value2"
 }
 ```
 
@@ -176,10 +192,10 @@ async function sendSourseSmartNotification(firebase, topic, title, body, actionU
   var payload = {
     condition: `'${topic}' in topics && 'sourse_sdk_integrated' in topics`,
     data: {
-      'handler': 'com.sourse.notification',
-      'title':  title,
-      'message': body,
-      'actionURL': actionURL
+      "handler": "com.sourse.notification",
+      "title":  title,
+      "message": body,
+      "actionURL": actionURL
     }
   }
   return firebase.messaging().send(payload);
@@ -190,8 +206,8 @@ async function sendStandardNotification(firebase, topic, title, body) {
   var payload = {
     condition: `'${topic}' in topics && !('sourse_sdk_integrated' in topics)`,
     notification: {
-      title: title,
-      body: body
+      "title": title,
+      "body": body
     }
   }
   return firebase.messaging().send(payload));
